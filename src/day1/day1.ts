@@ -1,24 +1,67 @@
-export const day1 = (data: string) => {
-  let leftarray = []
-  let rightarray = []
-  let parts = []
-  let score = 0
 
-  for (let i = 0; i < data.length; i++) {
-    parts = data[i].split(/\s+/)
-    leftarray.push(+parts[0])
-    rightarray.push(+parts[1])
+// export const day3 = (data: string[]) => {
+//   let score = 50
+//   let answer = 0
+
+//   function split(s: string): number {
+//     if (s[0] == "R") {
+//       return +s.slice(1)
+//     } else {
+//       return -s.slice(1)
+//     }
+//   }
+
+//   const rotation = data.map(split);
+
+//   console.log(rotation)
+
+//   for (let i = 0; i < rotation.length; i++) {
+//     score = + (score + rotation[i])
+//     score = score % 100
+//     if (score < 0) { score = score + 100 }
+//     else if (score >= 100) { score = score - 100 }
+//     if (score == 0) { answer = answer + 1 }
+//     console.log(score)
+
+//   }
+//   console.log(answer)
+
+
+
+//   return answer;
+// };
+
+
+export const day1 = (data: string[]) => {
+  let score = 50
+  let answer = 0
+
+  function split(s: string): number {
+    if (s[0] == "R") {
+      return +s.slice(1)
+    } else {
+      return -s.slice(1)
+    }
   }
 
-  leftarray.sort((a, b) => a - b)
-  rightarray.sort((a, b) => a - b)
+  const rotation = data.map(split);
 
+  // console.log(rotation)
 
-  for (let j = 0; j < data.length; j++) {
-    if (rightarray[j] > leftarray[j]) { score += (rightarray[j] - leftarray[j]) }
-    else { score += (leftarray[j] - rightarray[j]) }
+  for (let i = 0; i < rotation.length; i++) {
+    score = + (score + rotation[i])
+
+    //if (score>100) {}
+    score = score % 100
+    if (score < 0) { score = score + 100 }
+    else if (score >= 100) { score = score - 100 }
+    if (score == 0) { answer = answer + 1 }
+    // console.log(score)
+
   }
+  // console.log(answer)
 
-  return score;
 
+
+  return answer;
 };

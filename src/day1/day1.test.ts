@@ -3,9 +3,8 @@ import { day1 } from './day1';
 import { data, testData } from './day1.data';
 
 
-
 test('Provided test cases', () => {
-  expect(day1(testData)).toBe(11);
+  expect(day1(testData)).toBe(3);
 });
 
 test('Returns an answer', () => {
