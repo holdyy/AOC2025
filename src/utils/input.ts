@@ -9,13 +9,10 @@ const getDelimiter = (input: string) => {
 };
 
 const mapToNumberIfNecessary = (input: string[]) => {
-  return input.map((e) => {
-    // Keep strings longer than 10 digits (unsafe as numbers)
-    if (/^\d+$/.test(e) && e.length <= 10) {
-      return Number(e);
-    }
-    return e;
-  });
+  if (input.every((value) => !isNaN(Number(value)))) {
+    return input.map((e) => Number(e));
+  }
+  return input;
 };
 
 export const parseInput = (input: string) => {
